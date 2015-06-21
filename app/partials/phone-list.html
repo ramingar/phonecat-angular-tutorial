@@ -1,0 +1,24 @@
+<p>Search: <input ng-model="query" /></p>
+<br/>
+
+<p>Order by:
+    <select ng-model="orderPhone">
+        <option value="name">Alphabetical</option>
+        <option value="age">Newest</option>
+        <option value="-age">Oldest</option>
+    </select>
+</p>
+<br/>
+
+<p ng-show="query.length>0">Results for your query ({{query}}):</p>
+(Orded by {{orderPhone}})
+<br/>
+<ul>
+    <li ng-repeat="phone in phones | filter:query | orderBy:orderPhone" class="thumbnail">
+        <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>
+        <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
+        <p>{{phone.snippet}}</p>
+    </li>
+</ul>
+
+<pre>{{phones | filter:query | orderBy:orderProp | json}}</pre>

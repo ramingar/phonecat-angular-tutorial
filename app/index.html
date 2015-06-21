@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="phonecatApp" ng-controller="PhoneListController">
+<html lang="en" ng-app="PhonecatApp" ng-controller="PhoneListController">
 <head>
   <meta charset="utf-8">
   <title
@@ -13,35 +13,11 @@
 
   <h1>Phone List!</h1>
 
-  <div>
-    <p>Search: <input ng-model="query" /></p>
-    <br/>
-
-    <p>Order by:
-      <select ng-model="orderPhone">
-        <option value="name">Alphabetical</option>
-        <option value="age">Newest</option>
-        <option value="-age">Oldest</option>
-      </select>
-    </p>
-    <br/>
-
-    <p ng-show="query.length>0">Results for your query ({{query}}):</p>
-    (Orded by {{orderPhone}})
-    <br/>
-    <ul>
-      <li ng-repeat="phone in phones | filter:query | orderBy:orderPhone" class="thumbnail">
-        <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>
-        <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
-        <p>{{phone.snippet}}</p>
-      </li>
-    </ul>
-
-    <pre>{{phones | filter:query | orderBy:orderProp | json}}</pre>
-
-  </div>
+  <div ng-view></div>
 
   <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="js/app.js"></script>
   <script src="./js/controllers.js"></script>
 </body>
 </html>
