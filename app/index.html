@@ -1,15 +1,24 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="phonecatApp">
 <head>
   <meta charset="utf-8">
   <title>My HTML File</title>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="css/app.css">
-  <script src="bower_components/angular/angular.js"></script>
 </head>
 <body>
 
-  <p>Nothing here {{'yet' + '!'}}</p>
+  <h1>Phone List!</h1>
 
+  <p>Search: <input ng-model="query" /></p>
+
+  <ul ng-controller="PhoneListController">
+    <li ng-repeat="phone in phones | filter:query">
+      {{ phone.name }} - {{ phone.snippet }}
+    </li>
+  </ul>
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="./js/controllers.js"></script>
 </body>
 </html>
