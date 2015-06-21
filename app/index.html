@@ -13,16 +13,25 @@
 
   <h1>Phone List!</h1>
 
-  <p>Search: <input ng-model="query" /></p>
+  <div ng-controller="PhoneListController">
+    <p>Search: <input ng-model="query" /></p>
+    <br/>
 
-  <br/>
+    <p>Order by:
+      <select ng-model="orderPhone">
+        <option value="name">Alphabetical</option>
+        <option value="age">Newest</option>
+      </select>
+    </p>
+    <br/>
 
-  <p ng-show="query.length>0">Results for your query ({{query}}):</p>
-  <ul ng-controller="PhoneListController">
-    <li ng-repeat="phone in phones | filter:query">
-      {{ phone.name }} - {{ phone.snippet }}
-    </li>
-  </ul>
+    <p ng-show="query.length>0">Results for your query ({{query}}):</p>
+    <ul>
+      <li ng-repeat="phone in phones | filter:query | orderBy:orderPhone">
+        {{ phone.name }} - {{ phone.snippet }}
+      </li>
+    </ul>
+  </div>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="./js/controllers.js"></script>
