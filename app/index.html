@@ -2,7 +2,10 @@
 <html lang="en" ng-app="phonecatApp">
 <head>
   <meta charset="utf-8">
-  <title>My HTML File</title>
+  <title
+    ng-bind-template="Google Phone Gallery{{ query.length > 0 ? ': ' + query : '' }}">
+    Google Phone Gallery
+  </title>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="css/app.css">
 </head>
@@ -12,6 +15,9 @@
 
   <p>Search: <input ng-model="query" /></p>
 
+  <br/>
+
+  <p ng-show="query.length>0">Results for your query ({{query}}):</p>
   <ul ng-controller="PhoneListController">
     <li ng-repeat="phone in phones | filter:query">
       {{ phone.name }} - {{ phone.snippet }}
