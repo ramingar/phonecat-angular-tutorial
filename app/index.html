@@ -21,11 +21,14 @@
       <select ng-model="orderPhone">
         <option value="name">Alphabetical</option>
         <option value="age">Newest</option>
+        <option value="-age">Oldest</option>
       </select>
     </p>
     <br/>
 
     <p ng-show="query.length>0">Results for your query ({{query}}):</p>
+    (Orded by {{orderPhone}})
+    <br/>
     <ul>
       <li ng-repeat="phone in phones | filter:query | orderBy:orderPhone">
         {{ phone.name }} - {{ phone.snippet }}
